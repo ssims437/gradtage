@@ -98,3 +98,11 @@ gleicher Skala je Spalte, damit die Höhen vergleichbar bleiben.
 
 [MIT](LICENSE). Daten: ERA5 über [Open-Meteo](https://open-meteo.com/), abgerufen am
 14. August 2026.
+
+Verwandt: [Plotterblätter](https://github.com/ssims437/plotterblaetter) ·
+[Redundanz](https://github.com/ssims437/redundanz) ·
+[Reparatur](https://github.com/ssims437/reparatur) ·
+[Würfel](https://github.com/ssims437/wuerfel) ·
+[Rechenwerk](https://github.com/ssims437/rechenwerk) ·
+[Nachkomma](https://github.com/ssims437/nachkomma) ·
+[Zeitsprung](https://github.com/ssims437/zeitsprung)
