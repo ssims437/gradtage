@@ -99,4 +99,4 @@ gleicher Skala je Spalte, damit die Höhen vergleichbar bleiben.
 [MIT](LICENSE). Daten: ERA5 über [Open-Meteo](https://open-meteo.com/), abgerufen am
 14. August 2026.
 
-Alle fünfzehn Blätter, nach Feld geordnet: **[ssims437.github.io](https://ssims437.github.io/)**
+Alle Blätter nach Feld geordnet: **[ssims437.github.io](https://ssims437.github.io/)**
