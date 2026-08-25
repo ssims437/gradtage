@@ -9,28 +9,28 @@
   :root {
     --grund:   #EEF1F3;
     --feld:    #FFFFFF;
-    --senke:   #E2E7EA;
+    --tief:   #E2E7EA;
     --linie:   #C6D0D6;
     --tinte:   #16202A;
-    --leise:   #5C6C7A;
+    --leise:   #586875;
     --heizen:  #B5651D;
     --kuehlen: #0090A0;
     --raster:  #DCE3E7;
     --schatten: 0 1px 0 rgba(22,32,42,.04), 0 12px 28px -20px rgba(22,32,42,.5);
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, "DejaVu Sans Mono", monospace;
+    --f-anzeige: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --f-text: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --f-fest: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, "DejaVu Sans Mono", monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --grund: #0D1418; --feld: #131C22; --senke: #0A1115; --linie: #24333C;
+      --grund: #0D1418; --feld: #131C22; --tief: #0A1115; --linie: #24333C;
       --tinte: #DCE6EC; --leise: #8698A5;
       --heizen: #C07C36; --kuehlen: #00A0B0; --raster: #1E2C34;
       --schatten: 0 1px 0 rgba(255,255,255,.03), 0 14px 32px -22px #000;
     }
   }
   :root[data-theme="dark"] {
-    --grund: #0D1418; --feld: #131C22; --senke: #0A1115; --linie: #24333C;
+    --grund: #0D1418; --feld: #131C22; --tief: #0A1115; --linie: #24333C;
     --tinte: #DCE6EC; --leise: #8698A5;
     --heizen: #C07C36; --kuehlen: #00A0B0; --raster: #1E2C34;
     --schatten: 0 1px 0 rgba(255,255,255,.03), 0 14px 32px -22px #000;
@@ -39,7 +39,7 @@
   * { box-sizing: border-box; }
   body {
     margin: 0; background: var(--grund); color: var(--tinte);
-    font-family: var(--sans); font-size: 16px; line-height: 1.6;
+    font-family: var(--f-text); font-size: 16px; line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
   .bogen {
@@ -48,26 +48,24 @@
     display: flex; flex-direction: column; gap: 28px;
   }
 
-  .kopfzeile {
-    font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
-    text-transform: uppercase; color: var(--leise);
-    display: flex; align-items: center; gap: 14px; margin: 0;
-  }
-  .kopfzeile::after { content: ""; flex: 1; height: 1px; background: var(--linie); }
+  .marke { font-family:var(--f-fest); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--leise); display:flex; gap:12px; align-items:center; margin:0; }
+  .marke::after { content:""; flex:1; height:1px; background:var(--linie); }
+  
 
   h1 {
-    font-family: var(--serif); font-weight: 600;
-    font-size: clamp(30px, 5vw, 50px); line-height: 1.08;
+    font-family: var(--f-anzeige); font-weight: 600;
+    font-size: clamp(24px,4.2vw,40px); line-height: 1.08;
     letter-spacing: -.015em; margin: 0; text-wrap: balance;
   }
   .anriss {
-    font-family: var(--serif); font-size: clamp(17px, 2.1vw, 20px);
+    font-family: var(--f-anzeige); font-size: clamp(17px, 2.1vw, 20px);
     line-height: 1.55; color: var(--leise); max-width: 62ch; margin:0;
   }
   .anriss b { color: var(--tinte); font-weight: 600; }
 
   h2 {
-    font-family: var(--serif); font-size: 24px; font-weight: 600;
+    font-family: var(--f-anzeige); font-size: 24px; font-weight: 600;
     letter-spacing: -.01em; margin: 0 0 2px;
   }
   .unterzeile { color: var(--leise); font-size: 14px; margin: 0 0 14px; max-width: 70ch; }
@@ -81,11 +79,11 @@
   .kachel.heizen { border-top-color: var(--heizen); }
   .kachel.kuehlen { border-top-color: var(--kuehlen); }
   .kachel .marke {
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em;
+    font-family: var(--f-fest); font-size: 10.5px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--leise);
   }
   .kachel .zahl {
-    font-family: var(--serif); font-size: 40px; line-height: 1.05; font-weight: 600;
+    font-family: var(--f-anzeige); font-size: 40px; line-height: 1.05; font-weight: 600;
     font-variant-numeric: tabular-nums; letter-spacing: -.02em;
   }
   .kachel.heizen .zahl { color: var(--heizen); }
@@ -103,21 +101,21 @@
     display: flex; flex-direction: column; gap: 2px; justify-content: center;
   }
   @media (max-width: 820px) { .stadt-name { border-right: 0; border-bottom: 1px solid var(--linie); } }
-  .stadt-name h3 { font-family: var(--serif); font-size: 21px; margin: 0; font-weight: 600; }
-  .stadt-name .lage { font-family: var(--mono); font-size: 11px; color: var(--leise); }
+  .stadt-name h3 { font-family: var(--f-anzeige); font-size: 21px; margin: 0; font-weight: 600; }
+  .stadt-name .lage { font-family: var(--f-fest); font-size: 11px; color: var(--leise); }
   .reihe { padding: 14px 16px; min-width: 0; }
   .reihe + .reihe { border-left: 1px solid var(--linie); }
   @media (max-width: 820px) { .reihe + .reihe { border-left: 0; border-top: 1px solid var(--linie); } }
   .reihe-kopf { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
   .reihe-titel {
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em;
+    font-family: var(--f-fest); font-size: 10.5px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--leise);
   }
-  .reihe-wert { font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; margin-left: auto; color: var(--leise); }
+  .reihe-wert { font-family: var(--f-fest); font-size: 12.5px; font-variant-numeric: tabular-nums; margin-left: auto; color: var(--leise); }
   .punkt { display: inline-block; width: 9px; height: 9px; border-radius: 50%; vertical-align: -1px; margin-right: 5px; }
 
   svg { display: block; width: 100%; height: auto; overflow: visible; }
-  svg text { font-family: var(--mono); font-size: 10px; fill: var(--leise); }
+  svg text { font-family: var(--f-fest); font-size: 10px; fill: var(--leise); }
   .flaeche-heizen { fill: var(--heizen); opacity: .13; }
   .flaeche-kuehlen { fill: var(--kuehlen); opacity: .13; }
   .linie-heizen { fill: none; stroke: var(--heizen); stroke-width: 2; stroke-linejoin: round; }
@@ -130,12 +128,12 @@
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--linie); white-space: nowrap; }
   thead th {
-    font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    font-family: var(--f-fest); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
     color: var(--leise); font-weight: 400;
   }
   tbody tr:last-child td { border-bottom: 0; }
-  td.z, th.z { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
-  td.gruppe { font-family: var(--serif); font-size: 16px; font-weight: 600; background: var(--senke); }
+  td.z, th.z { text-align: right; font-family: var(--f-fest); font-variant-numeric: tabular-nums; }
+  td.gruppe { font-family: var(--f-anzeige); font-size: 16px; font-weight: 600; background: var(--tief); }
   .waermer { color: var(--heizen); }
   .kuehler { color: var(--kuehlen); }
   .schwach { color: var(--leise); font-size: 12.5px; }
@@ -144,14 +142,14 @@
     background: var(--feld); border: 1px solid var(--linie); border-left: 3px solid var(--linie);
     padding: 16px 20px; box-shadow: var(--schatten);
   }
-  .notiz h3 { font-family: var(--serif); font-size: 18px; margin: 0 0 6px; font-weight: 600; }
+  .notiz h3 { font-family: var(--f-anzeige); font-size: 18px; margin: 0 0 6px; font-weight: 600; }
   .notiz p { margin: 0 0 10px; font-size: 14.5px; color: var(--leise); max-width: 74ch; }
   .notiz p:last-child { margin-bottom: 0; }
   .notiz b { color: var(--tinte); font-weight: 600; }
-  code { font-family: var(--mono); font-size: .88em; background: var(--senke); padding: 1px 5px; }
+  code { font-family: var(--f-fest); font-size: .88em; background: var(--tief); padding: 1px 5px; }
 
   .legende {
-    display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--mono);
+    display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--f-fest);
     font-size: 11.5px; color: var(--leise); align-items: center;
   }
   .quelle { font-size: 13px; color: var(--leise); border-top: 1px solid var(--linie); padding-top: 16px; }
@@ -160,11 +158,25 @@
   @media (min-width: 1500px) { .bogen { max-width: 1360px; } }
   @media (min-width: 1800px) { .bogen { max-width: 1560px; } }
   @media (min-width: 2200px) { .bogen { max-width: 1800px; } }
+
+  /* PFLEGE: schmalschirm */
+  @media (max-width: 700px) {
+    table { display: block; max-width: 100%; overflow-x: auto; }
+    select, input[type=text], input[type=number], input[type=search] { max-width: 100%; }
+  }
+
+  /* PFLEGE: klickflaechen */
+  button, select { min-height: 34px; }
+  input[type=range] { height: 26px; }
+
+  /* PFLEGE: fokus */
+  :focus-visible { outline: 2px solid var(--merk, currentColor); outline-offset: 2px; }
+  .marke button { order: 2; margin-left: 12px; }
 </style>
 
 <main class="bogen">
 
-  <p class="kopfzeile">Messreihe 1985 – 2025 · Wien, Graz, Innsbruck</p>
+  <p class="marke">Blatt · Klima<button id="b-thema">Ansicht</button></p>
   <h1>Vierzig Jahre später heizt Österreich weniger — und kühlt doppelt so viel</h1>
   <p class="anriss">
     Heizgradtage und Kühlgradtage sind das Maß, mit dem Gebäude ausgelegt und Energiemengen
@@ -294,6 +306,9 @@
     anlegen();
     return g;
   };
+
+
+
 })();
 </script>
 <script>
@@ -444,5 +459,30 @@ document.querySelector("#tabelle tbody").innerHTML = ORTE.map(function (ort) {
 }).join("");
 </script>
 
+<script>
+  /* PFLEGE: ansicht — dieselbe Bedienung wie in den übrigen Blättern: erst die
+     Systemvorgabe, ein Druck stellt bewusst um. Gezeichnet wird danach neu,
+     weil Farben aus dem Stilblatt im Bild nicht von selbst nachziehen. */
+  (function () {
+    const knopf = document.getElementById("b-thema");
+    if (!knopf) return;
+    knopf.addEventListener("click", () => {
+      const jetzt = document.documentElement.getAttribute("data-theme");
+      const dunkel = matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme",
+        jetzt ? (jetzt === "dark" ? "light" : "dark") : (dunkel ? "light" : "dark"));
+      const male = [];
+      if (typeof refreshTheme === "function") male.push(refreshTheme);
+      if (typeof neuFarben === "function") male.push(neuFarben);
+      if (typeof zeichnen === "function") male.push(zeichnen);
+      if (typeof zeichne === "function") male.push(zeichne);
+      if (typeof draw === "function") male.push(draw);
+      if (typeof render === "function") male.push(render);
+      if (typeof lauf === "function") male.push(lauf);
+      if (typeof neu === "function") male.push(neu);
+      for (const f of male) { try { f(); } catch (e) { void e; } }
+    });
+  })();
+</script>
 </body>
 </html>
